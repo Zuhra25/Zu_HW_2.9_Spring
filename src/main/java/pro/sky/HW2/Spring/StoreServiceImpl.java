@@ -16,7 +16,10 @@ public class StoreServiceImpl implements StoreService {
     }
 
     public Map<Integer, String> basket(){
-        return new HashMap<>(products);
+        return products;
     }
 
+    public String add(){
+        return "hi";
+    }
 }
