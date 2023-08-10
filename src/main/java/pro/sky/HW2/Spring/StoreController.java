@@ -14,24 +14,33 @@ import java.util.Map;
 //@SessionScope
 @RequestMapping("/order")
 public class StoreController {
-    private final StoreServiceImpl storeServiceImpl;
+    private final StoreService storeService;
 
-    public StoreController(StoreServiceImpl storeServiceImpl) {
-        this.storeServiceImpl = storeServiceImpl;
+    public StoreController(StoreService storeService) {
+        this.storeService = storeService;
     }
 
+    //    @GetMapping("/get")
+//    public Map<Integer, String> get() {
+//        return storeServiceImpl.get();
+//    }
+//
+//    @GetMapping("/add")
+//    public String add(@RequestParam List<Integer> ids) {
+//        return storeServiceImpl.add(ids);
+//    }
     @GetMapping("/get")
     public Map<Integer, String> get() {
-        return storeServiceImpl.get();
+        return storeService.get();
     }
 
     @GetMapping("/add")
     public String add(@RequestParam List<Integer> ids) {
-        return storeServiceImpl.add(ids);
+        return storeService.add(ids);
     }
 
     // /store/order/add?ids=1
-    //add?ids=1,2,3
+    //
     // /store/order/get
     // add?id=
 

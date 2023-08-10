@@ -4,17 +4,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
-
 @SessionScope
 public class StoreServiceImpl implements StoreService {
-    public Basket basket;
+//    private final Basket basket;
+//
+//    public StoreServiceImpl(Basket basket) {
+//        this.basket = basket;
+//    }
 
-    public StoreServiceImpl(Basket basket) {
-        this.basket = basket;
-    }
+
+
 
     private final List<String> fruits = new ArrayList<>(Arrays.asList("яблоко", "банан", "манго", "груша", "апельсин"));
 
@@ -34,4 +35,15 @@ public class StoreServiceImpl implements StoreService {
         }
         return "выбранные фрукты добавлены";
     }
+
+//
+//    public void get() {
+//        basket.getBasket();
+//    }
+//
+//    public void add(List<Integer> ids) {
+//        basket.addBasket(ids);
+//    }
+
+
 }
