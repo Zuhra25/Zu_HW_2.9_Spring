@@ -1,29 +1,37 @@
 package pro.sky.HW2.Spring;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.SessionScope;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
+
+@SessionScope
 public class StoreServiceImpl implements StoreService {
-         private final Map<Integer, Product> products = new HashMap<>();
+    public Basket basket;
 
-    public StoreServiceImpl() {
-
-
-        products.put(1, new Product("apple"));
-        products.put(2, new Product("banana"));
-        products.put(3, new Product("cherry"));
+    public StoreServiceImpl(Basket basket) {
+        this.basket = basket;
     }
 
-    public Map<Integer, Product> basket() {
+    private final List<String> fruits = new ArrayList<>(Arrays.asList("яблоко", "банан", "манго", "груша", "апельсин"));
+
+    private final Map<Integer, String> products = new HashMap<>();
+
+    public StoreServiceImpl() {
+        products.put(0, new String(fruits.get(0)));
+    }
+
+    public Map<Integer, String> get() {
         return products;
     }
 
-//    public String add(Integer id) {
-//        return products.put(id, "pineapple");
-//    }
+    public String add(List<Integer> ids) {
+        for (Integer i : ids) {
+            products.put(i, new String(fruits.get(i)));
+        }
+        return "выбранные фрукты добавлены";
+    }
 }
